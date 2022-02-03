@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="main">
+    <file>mayaico.png</file>
+  </qresource>
+</RCC>
