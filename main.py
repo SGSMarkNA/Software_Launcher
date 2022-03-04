@@ -189,7 +189,7 @@ def Setup_Maya_For_Studio(python_version):
 #----------------------------------------------------------------------
 def Build_Launch_Command(version):
 	""""""
-	return r'"c:\Program Files\Autodesk\Maya{}\bin\maya.exe"'.format(version)
+	return r'"C:\Program Files\Autodesk\Maya{}\bin\maya.exe"'.format(version)
 
 ########################################################################
 class Software_Launcher_UI(QtWidgets.QWidget):
