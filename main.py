@@ -2,7 +2,7 @@ import subprocess
 import os
 import sys
 from pathlib import Path
-
+import Random_Facts_Selector
 
 _this_dir = Path(os.path.dirname(__file__))
 os.sys.path.append(str(_this_dir))
@@ -17,7 +17,7 @@ _site_pak_path  = _code_base_path.joinpath("Python3","Global_Systems","AW_site_p
 
 os.sys.path.append(str(_site_pak_path))
 
-from PySide2 import QtCore, QtGui, QtUiTools, QtWidgets
+from PySide2 import QtCore, QtUiTools, QtWidgets
 QtSlot         = QtCore.Slot
 QtSignal       = QtCore.Signal
 QtProperty     = QtCore.Property
@@ -179,7 +179,7 @@ def Setup_Maya_For_Studio(python_version):
 	_studio_maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
 	_studio_global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
 	
-	paths_to_add = ";".join( [ _studio_maya_path, _studio_global_systems_path ] )
+	#paths_to_add = ";".join( [ _studio_maya_path, _studio_global_systems_path ] )
 	
 	if "PYTHONPATH" in os.environ:
 		os.environ["PYTHONPATH"] = os.environ["PYTHONPATH"] + ";" + _studio_maya_path + ";" + _studio_global_systems_path
@@ -198,11 +198,16 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	def __init__(self,parent=None):
 		"""Constructor"""
 		super(Software_Launcher_UI,self).__init__(parent)
+		self._Random_facts_selector = Random_Facts_Selector.Random_Facts_Selector()
+		self.new_random_fact_timer = QtCore.QTimer()
+		self.new_random_fact_timer.setInterval(40000)
+		self.new_random_fact_timer.timeout.connect(self.update_Random_Fact)
 		if False:
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
 			self.userToolsCheckBox = QtWidgets.QCheckBox()
 			
+			self.Random_Facts_Text = QtWidgets.QTextBrowser()
 			self.versionComboBox = QtWidgets.QComboBox()
 			self.modeComboBox    = QtWidgets.QComboBox()
 			self.pythonComboBox  = QtWidgets.QComboBox()
@@ -214,10 +219,13 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	#----------------------------------------------------------------------
 	def _init(self):
 		""""""
+		self._orig_html = self.Random_Facts_Text.toHtml()
 		self.versionComboBox.clear()
 		maya_versions = get_Maya_Versions()
 		maya_versions.reverse()
-		self.versionComboBox.addItems(maya_versions)		
+		self.versionComboBox.addItems(maya_versions)
+		self.update_Random_Fact()
+		self.new_random_fact_timer.start()
 	#----------------------------------------------------------------------
 	@QtCore.Slot(str)
 	def on_versionComboBox_currentIndexChanged(self,val):
@@ -261,7 +269,14 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		
 		cmd = Build_Launch_Command(maya_version)
 		subprocess.Popen(cmd)
-
+		
+	#----------------------------------------------------------------------
+	def update_Random_Fact(self):
+		""""""
+		new_fact = self._Random_facts_selector.get_Random_Fact()
+		new_html = self._orig_html.replace("REPLACE_CATEGORY",new_fact.category).replace("REPLACE_SUBJECT",new_fact.subject).replace("REPLACE_FACT",new_fact.fact)
+		self.Random_Facts_Text.setHtml(new_html)
+		
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_AutomotiveButton_clicked(self):
@@ -311,6 +326,6 @@ if __name__ == '__main__':
 	win = make_ui()
 	win._init()
 	QtCore.QMetaObject.connectSlotsByName(win)
-	win.setWindowFlags(QtCore.Qt.WindowTitleHint)
+	#win.setWindowFlags(QtCore.Qt.WindowTitleHint)
 	win.show()
 	sys.exit(app.exec_())
