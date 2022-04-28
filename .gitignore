@@ -114,3 +114,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+/Software_Launcher.wpr
