@@ -58,7 +58,7 @@ def Maya_Enable_Legacy_Render_Layers(val):
 #----------------------------------------------------------------------
 def Maya_Enable_Legacy_Viewport(val):
 	"""Turns on of off the use of MAYA_ENABLE_LEGACY_VIEWPORT"""
-	if val == True and not "MAYA_ENABLE_LEGACY_VIEWPORT" in os.environ:
+	if val == True:
 		os.environ["MAYA_ENABLE_LEGACY_VIEWPORT"] = "1"
 	elif "MAYA_ENABLE_LEGACY_VIEWPORT" in os.environ:
 		del os.environ["MAYA_ENABLE_LEGACY_VIEWPORT"]
@@ -282,6 +282,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	def on_AutomotiveButton_clicked(self):
 		""""""
 		Setup_Maya_For_Studio("2")
+		Set_Maya_Python_Version("2")
 		Maya_Enable_Legacy_Render_Layers(True)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(True)
