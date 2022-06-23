@@ -112,8 +112,9 @@ def Remove_Studio_Code_From_System_Path():
 				
 		os.environ["PATH"] = ";".join(new_sys_path)
 
+
 #----------------------------------------------------------------------
-def Setup_Maya_For_Clean():
+def Clear_Legacy_Enviorment():
 	""""""
 	Remove_Studio_Code_From_Python_Path()
 	Remove_Studio_Code_From_Maya_Script_Path()
@@ -164,27 +165,27 @@ def Remove_Path_From_Python_Path(path):
 			current_paths.remove(path)
 		os.environ["PYTHONPATH"] = ";".join(current_paths)
 		
+
 #----------------------------------------------------------------------
-def Setup_Maya_For_Studio(python_version):
+def Set_Code_Location(python_version):
 	""""""
-	Remove_Studio_Code_From_Python_Path()
-	Remove_Studio_Code_From_Maya_Script_Path()
-	Remove_Studio_Code_From_System_Path()
-	
 	if python_version == "2":
 		python_version = "Python2"
 	elif python_version == "3":
 		python_version = "Python3"
 		
-	_studio_maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
-	_studio_global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
+	maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
+	global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
+	Add_Path_To_Python_Path(maya_path)
+	Add_Path_To_Python_Path(global_systems_path)
 	
-	#paths_to_add = ";".join( [ _studio_maya_path, _studio_global_systems_path ] )
-	
-	if "PYTHONPATH" in os.environ:
-		os.environ["PYTHONPATH"] = os.environ["PYTHONPATH"] + ";" + _studio_maya_path + ";" + _studio_global_systems_path
-	else:
-		os.environ["PYTHONPATH"] = _studio_maya_path + ";" + _studio_global_systems_path
+#----------------------------------------------------------------------
+def Setup_Maya_For_Studio(python_version):
+	""""""
+	#Remove_Studio_Code_From_Python_Path()
+	#Remove_Studio_Code_From_Maya_Script_Path()
+	#Remove_Studio_Code_From_System_Path()
+	Set_Code_Location(python_version)
 
 #----------------------------------------------------------------------
 def Build_Launch_Command(version):
@@ -211,10 +212,11 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.versionComboBox = QtWidgets.QComboBox()
 			self.modeComboBox    = QtWidgets.QComboBox()
 			self.pythonComboBox  = QtWidgets.QComboBox()
-			self.LaunchButton   = QtWidgets.QPushButton()
 			self.AutomotiveButton = QtWidgets.QComboBox()
-			self.CleanButton = QtWidgets.QComboBox()
-			self.LegoButton = QtWidgets.QComboBox()
+			self.LaunchButton   = QtWidgets.QPushButton()
+			self.AmsterdamButton = QtWidgets.QPushButton()
+			self.CleanButton = QtWidgets.QPushButton()
+			self.LegoButton = QtWidgets.QPushButton()
 	
 	#----------------------------------------------------------------------
 	def _init(self):
@@ -230,7 +232,6 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	@QtCore.Slot(str)
 	def on_versionComboBox_currentIndexChanged(self,val):
 		""""""
-		val
 		if int(self.versionComboBox.currentText()) < 2022:
 			self.pythonComboBox.setDisabled(True)
 		else:
@@ -255,15 +256,18 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		use_legacy_Viewport      = self.legacyViewportCheckBox.checkState() == QtCore.Qt.Checked
 		use_maya_user_tools      = self.userToolsCheckBox.checkState() == QtCore.Qt.Checked
 		
-		if maya_mode == Modes.Clean:
-			Setup_Maya_For_Clean()
-		elif maya_mode == Modes.Studio:
-			Setup_Maya_For_Studio(python_version)
+		Clear_Legacy_Enviorment()
+		
+		
+		if maya_version != "2022":
+			python_version = "2"
+		
+		Set_Maya_Python_Version(python_version)
+		Set_Code_Location(python_version)
+			
+		if maya_mode == Modes.Studio:
 			Enable_User_Tools(use_maya_user_tools)
-			
-		if maya_version == "2022":
-			Set_Maya_Python_Version(python_version)
-			
+		
 		Maya_Enable_Legacy_Render_Layers(use_legacy_Render_Layers)
 		Maya_Enable_Legacy_Viewport(use_legacy_Viewport)
 		
@@ -281,38 +285,68 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	@QtCore.Slot()
 	def on_AutomotiveButton_clicked(self):
 		""""""
-		Setup_Maya_For_Studio("2")
-		Set_Maya_Python_Version("2")
+		python_version = "2"
+		maya_version   = "2020"
+		Clear_Legacy_Enviorment()
+		Set_Maya_Python_Version(python_version)
+		Set_Code_Location(python_version)
+		
 		Maya_Enable_Legacy_Render_Layers(True)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(True)
-		cmd = Build_Launch_Command("2020")
+		cmd = Build_Launch_Command(maya_version)
 		subprocess.Popen(cmd)
 		
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_CleanButton_clicked(self):
 		""""""
-		Setup_Maya_For_Clean()
-		Set_Maya_Python_Version("2")
+		python_version = "2"
+		maya_version   = "2020"	
+		
+		Clear_Legacy_Enviorment()
+		Set_Maya_Python_Version(python_version)
+		
 		Maya_Enable_Legacy_Render_Layers(False)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(False)
-		cmd = Build_Launch_Command("2020")
+		
+		cmd = Build_Launch_Command(maya_version)
 		subprocess.Popen(cmd)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_LegoButton_clicked(self):
 		""""""
-		Setup_Maya_For_Clean()
-		Set_Maya_Python_Version("3")
+		python_version = "3"
+		maya_version   = "2022"	
+		Clear_Legacy_Enviorment()
+		Set_Maya_Python_Version(python_version)
+		
 		Maya_Enable_Legacy_Render_Layers(False)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(False)
-		Add_Maya_Module_Path( _code_base_path.joinpath("_3rd_Party","LLRToolset","Tools_2022") )
-		cmd = Build_Launch_Command("2022")
-		subprocess.Popen(cmd)
 		
+		Add_Maya_Module_Path( _code_base_path.joinpath("_3rd_Party","LLRToolset","Tools_2022") )
+		
+		cmd = Build_Launch_Command(maya_version)
+		subprocess.Popen(cmd)
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_AmsterdamButton_clicked(self):
+		""""""
+		python_version = "2"
+		maya_version   = "2018"
+		
+		Clear_Legacy_Enviorment()
+		Set_Maya_Python_Version(python_version)
+		Set_Code_Location(python_version)
+		
+		Maya_Enable_Legacy_Render_Layers(False)
+		Maya_Enable_Legacy_Viewport(True)
+		Enable_User_Tools(True)
+		
+		cmd = Build_Launch_Command(maya_version)
+		subprocess.Popen(cmd)	
 _UI_Loader.registerCustomWidget(Software_Launcher_UI)
 
 def make_ui():
