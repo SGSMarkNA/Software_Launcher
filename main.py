@@ -341,7 +341,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		Set_Maya_Python_Version(python_version)
 		Set_Code_Location(python_version)
 		
-		Maya_Enable_Legacy_Render_Layers(False)
+		Maya_Enable_Legacy_Render_Layers(True)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(True)
 		
