@@ -1,5 +1,8 @@
 import os
 
+_file_dir = os.path.dirname(__file__)
+qrc_file = os.path.join(_file_dir,"UI","icons","icons.qrc")
+
 def compile_rcc_file(rcc_file, dest_foulder=None, dest_name=None):
     if not os.path.exists(rcc_file):
         raise IOError("File %r Does Not Exist" % str(rcc_file))
@@ -17,4 +20,4 @@ def compile_rcc_file(rcc_file, dest_foulder=None, dest_name=None):
     os.system(command)
 
 if __name__ == "__main__":
-    compile_rcc_file(r"c:\Users\drew.loveridge\Documents\SGS_Tools\Global_Systems\PYQT\RESOURCES\Maya_Innerface_Icons\Maya_Innerface_Icons.qrc", dest_foulder=r"c:\Users\drew.loveridge\Documents\SGS_Tools\Global_Systems\PYQT\RESOURCES",dest_name="Maya_Innerface_Icons_p3.py" )
+    compile_rcc_file(qrc_file, dest_foulder=_file_dir,dest_name="icons.py" )

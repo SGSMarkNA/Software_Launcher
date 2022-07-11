@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="main">
     <file>mayaico.png</file>
+    <file>nuke.png</file>
   </qresource>
 </RCC>
