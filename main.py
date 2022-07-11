@@ -210,15 +210,15 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	def __init__(self,parent=None):
 		"""Constructor"""
 		super(Software_Launcher_UI,self).__init__(parent)
-		self._Random_facts_selector = Random_Facts_Selector.Random_Facts_Selector()
-		self.new_random_fact_timer = QtCore.QTimer()
-		self.new_random_fact_timer.setInterval(40000)
-		self.new_random_fact_timer.timeout.connect(self.update_Random_Fact)
+		#self._Random_facts_selector = Random_Facts_Selector.Random_Facts_Selector()
+		#self.new_random_fact_timer = QtCore.QTimer()
+		#self.new_random_fact_timer.setInterval(40000)
+		#self.new_random_fact_timer.timeout.connect(self.update_Random_Fact)
 		if False:
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
 			self.userToolsCheckBox = QtWidgets.QCheckBox()
-			
+			self.Random_Facts_groupBox = QtWidgets.QWidget()
 			self.Random_Facts_Text = QtWidgets.QTextBrowser()
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
@@ -236,14 +236,15 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		""""""
 		self._nuke_12_exe = find_Nuke_Versions(12)
 		self._nuke_13_exe = find_Nuke_Versions(13)
-		self._orig_html = self.Random_Facts_Text.toHtml()
+		#self._orig_html = self.Random_Facts_Text.toHtml()
 		self.versionComboBox.clear()
 		maya_versions = get_Maya_Versions()
 		maya_versions.reverse()
 		self.versionComboBox.addItems(maya_versions)
-		self.update_Random_Fact()
-		self.new_random_fact_timer.start()
+		#self.update_Random_Fact()
+		#self.new_random_fact_timer.start()
 		self._disable_Buttons_Based_On_Found_Content()
+		#self.Random_Facts_groupBox.setHidden(True)
 	#----------------------------------------------------------------------
 	def _disable_Buttons_Based_On_Found_Content(self):
 		""""""
