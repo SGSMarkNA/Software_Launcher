@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>961</width>
-    <height>638</height>
+    <width>642</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -160,7 +160,7 @@
                 <enum>QTabWidget::Triangular</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="usesScrollButtons">
                 <bool>false</bool>
