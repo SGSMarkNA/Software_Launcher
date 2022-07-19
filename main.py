@@ -262,7 +262,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		""""""
 		if self._wing_remote_debugging_enabled and not val:
 			os.sys.path.remove(_winghome_path)
-			os.environ["WINGHOME"] = ""
+			if "WINGHOME" in os.environ:
+				del os.environ["WINGHOME"]
 		else:
 			os.sys.path.append(_winghome_path)
 			os.environ["WINGHOME"] = _winghome_path
