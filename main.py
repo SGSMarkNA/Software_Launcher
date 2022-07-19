@@ -8,10 +8,11 @@ _this_dir = Path(os.path.dirname(__file__))
 os.sys.path.append(str(_this_dir))
 
 # Code Path Collection
-_code_base_path = _this_dir.parent
-_code_base_name = _code_base_path.name
-_ui_folder_path = _this_dir.joinpath("UI")
-_site_pak_path  = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
+_code_base_path     = _this_dir.parent
+_code_base_name     = _code_base_path.name
+_ui_folder_path     = _this_dir.joinpath("UI")
+_site_pak_path      = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
+_winghome_path      = _code_base_path.joinpath("_3rd_Party","wing-debugger")
 
 
 
@@ -37,6 +38,9 @@ class Modes:
 # made and edit wooho
 
 
+def Enable_Remote_DeBugging():
+	os.sys.path.append(_winghome_path)
+	os.environ["WINGHOME"] = _winghome_path
 
 #----------------------------------------------------------------------
 def get_Maya_Versions():
@@ -210,16 +214,11 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	def __init__(self,parent=None):
 		"""Constructor"""
 		super(Software_Launcher_UI,self).__init__(parent)
-		#self._Random_facts_selector = Random_Facts_Selector.Random_Facts_Selector()
-		#self.new_random_fact_timer = QtCore.QTimer()
-		#self.new_random_fact_timer.setInterval(40000)
-		#self.new_random_fact_timer.timeout.connect(self.update_Random_Fact)
 		if False:
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
 			self.userToolsCheckBox = QtWidgets.QCheckBox()
-			self.Random_Facts_groupBox = QtWidgets.QWidget()
-			self.Random_Facts_Text = QtWidgets.QTextBrowser()
+			self.Enable_Remote_Debugging_checkBox = QtWidgets.QCheckBox()
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
 			self.pythonComboBox    = QtWidgets.QComboBox()
@@ -236,15 +235,12 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		""""""
 		self._nuke_12_exe = find_Nuke_Versions(12)
 		self._nuke_13_exe = find_Nuke_Versions(13)
-		#self._orig_html = self.Random_Facts_Text.toHtml()
+		self._wing_remote_debugging_enabled = False
 		self.versionComboBox.clear()
 		maya_versions = get_Maya_Versions()
 		maya_versions.reverse()
 		self.versionComboBox.addItems(maya_versions)
-		#self.update_Random_Fact()
-		#self.new_random_fact_timer.start()
 		self._disable_Buttons_Based_On_Found_Content()
-		#self.Random_Facts_groupBox.setHidden(True)
 	#----------------------------------------------------------------------
 	def _disable_Buttons_Based_On_Found_Content(self):
 		""""""
@@ -260,6 +256,18 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.pythonComboBox.setDisabled(True)
 		else:
 			self.pythonComboBox.setDisabled(False)
+	#----------------------------------------------------------------------
+	@QtCore.Slot(str)
+	def on_Enable_Remote_Debugging_checkBox_toggled(self,val):
+		""""""
+		if self._wing_remote_debugging_enabled and not val:
+			os.sys.path.remove(_winghome_path)
+			os.environ["WINGHOME"] = ""
+		else:
+			os.sys.path.append(_winghome_path)
+			os.environ["WINGHOME"] = _winghome_path
+			
+		self._wing_remote_debugging_enabled = val
 	#----------------------------------------------------------------------
 	@QtCore.Slot(str)
 	def on_modeComboBox_currentIndexChanged(self,val):

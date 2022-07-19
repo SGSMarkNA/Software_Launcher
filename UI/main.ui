@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Software Launcher</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.0113636 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_7">
    <property name="spacing">
     <number>0</number>
@@ -37,6 +40,22 @@
    </property>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Global Options</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QCheckBox" name="Enable_Remote_Debugging_checkBox">
+          <property name="text">
+           <string>Enable Remote Debugging</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
      <item>
       <widget class="QWidget" name="Nuke_Container_widget" native="true">
        <layout class="QVBoxLayout" name="verticalLayout_9">
