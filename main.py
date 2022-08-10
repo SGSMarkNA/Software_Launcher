@@ -12,9 +12,8 @@ _code_base_path     = _this_dir.parent
 _code_base_name     = _code_base_path.name
 _ui_folder_path     = _this_dir.joinpath("UI")
 _site_pak_path      = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
+_3rd_Party_path     = _code_base_path.joinpath("_3rd_Party")
 _winghome_path      = _code_base_path.joinpath("_3rd_Party","wing-debugger")
-
-
 
 os.sys.path.append(str(_site_pak_path))
 
@@ -176,6 +175,32 @@ def Add_Path_To_Python_Path(path):
 			
 		os.environ["PYTHONPATH"] = ";".join( current_paths )
 #----------------------------------------------------------------------
+def Add_Path_To_Maya_XBMLANGPATH(path):
+	""""""
+	path = str(path)
+	if not "XBMLANGPATH" in os.environ:
+		os.environ["XBMLANGPATH"] = path
+	else:
+		current_paths = os.environ["XBMLANGPATH"].split(";")
+		
+		if not path in current_paths:
+			current_paths.append(path)
+			
+		os.environ["XBMLANGPATH"] = ";".join( current_paths )
+#----------------------------------------------------------------------
+def Add_Path_To_Maya_Scripts_Path(path):
+	""""""
+	path = str(path)
+	if not "MAYA_SCRIPT_PATH" in os.environ:
+		os.environ["MAYA_SCRIPT_PATH"] = path
+	else:
+		current_paths = os.environ["MAYA_SCRIPT_PATH"].split(";")
+		
+		if not path in current_paths:
+			current_paths.append(path)
+			
+		os.environ["MAYA_SCRIPT_PATH"] = ";".join( current_paths )
+#----------------------------------------------------------------------
 def Remove_Path_From_Python_Path(path):
 	""""""
 	path = str(path)
@@ -323,7 +348,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		Clear_Legacy_Enviorment()
 		Set_Maya_Python_Version(python_version)
 		Set_Code_Location(python_version)
-		
+		Add_Path_To_Python_Path(_3rd_Party_path)
 		Maya_Enable_Legacy_Render_Layers(True)
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(True)
@@ -359,8 +384,12 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		Maya_Enable_Legacy_Viewport(True)
 		Enable_User_Tools(False)
 		
-		Add_Maya_Module_Path( _code_base_path.joinpath("_3rd_Party","LLRToolset","Tools_2022") )
-		
+		#Add_Maya_Module_Path( _code_base_path.joinpath("_3rd_Party","LLRToolset","Tools_2022") )
+		Add_Maya_Module_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\modules\LLRToolset")
+		os.environ["MAYA_SHELF_PATH"] = r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\assets\shelf"
+		Add_Path_To_Python_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
+		Add_Path_To_Maya_XBMLANGPATH(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\shelf\icons")
+		Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd)
 	#----------------------------------------------------------------------
