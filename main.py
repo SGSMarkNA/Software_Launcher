@@ -403,7 +403,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
 			self.userToolsCheckBox = QtWidgets.QCheckBox()
-			self.Enable_Remote_Debugging_checkBox = QtWidgets.QCheckBox()
+			self.Enable_Remote_Debugging_checkBox = QtWidgets.QCheckBox().to
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
 			self.pythonComboBox    = QtWidgets.QComboBox()
@@ -442,16 +442,16 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		else:
 			self.pythonComboBox.setDisabled(False)
 	#----------------------------------------------------------------------
-	@QtCore.Slot(str)
+	@QtCore.Slot(bool)
 	def on_Enable_Remote_Debugging_checkBox_toggled(self,val):
 		""""""
 		if self._wing_remote_debugging_enabled and not val:
-			os.sys.path.remove(_winghome_path)
+			os.sys.path.remove(str(_winghome_path))
 			if "WINGHOME" in os.environ:
 				del os.environ["WINGHOME"]
 		else:
-			os.sys.path.append(_winghome_path)
-			os.environ["WINGHOME"] = _winghome_path
+			os.sys.path.append(str(_winghome_path))
+			os.environ["WINGHOME"] = str(_winghome_path)
 			
 		self._wing_remote_debugging_enabled = val
 	#----------------------------------------------------------------------
