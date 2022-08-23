@@ -232,6 +232,166 @@ def Build_Maya_Launch_Command(version):
 	""""""
 	return r'"C:\Program Files\Autodesk\Maya{}\bin\maya.exe"'.format(version)
 
+
+########################################################################
+class Environment(dict):
+	""""""
+	##----------------------------------------------------------------------
+	def __init__(self):
+		"""Constructor"""
+		super(Environment,self).__init__(os.environ.copy())
+		self.Clear_Legacy_Enviorment()
+	#----------------------------------------------------------------------
+	def Clear_Legacy_Enviorment(self):
+		""""""
+		#----------------------------------------------------------------------
+		def Remove_Studio_Code_From_Python_Path():
+			""""""
+			if "PYTHONPATH" in self:
+				new_python_path = []
+				
+				for old_path_item in self["PYTHONPATH"].split(";"):
+					if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
+						new_python_path.append(old_path_item)
+						
+				self["PYTHONPATH"] = ";".join(new_python_path)
+				
+		#----------------------------------------------------------------------
+		def Remove_Studio_Code_From_Maya_Script_Path():
+			""""""
+			if "MAYA_SCRIPT_PATH" in self:
+				new_python_path = []
+				for old_path_item in self["MAYA_SCRIPT_PATH"].split(";"):
+					if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
+						new_python_path.append(old_path_item)
+				self["MAYA_SCRIPT_PATH"] = ";".join(new_python_path)
+				
+		#----------------------------------------------------------------------
+		def Remove_Studio_Code_Nuke_Path_Path():
+			""""""
+			if "NUKE_PATH" in self:
+				self["NUKE_PATH"] = ""
+		
+		#----------------------------------------------------------------------
+		def Remove_Studio_Code_From_System_Path():
+			""""""
+			if "PATH" in self["PATH"]:
+				current_sys_paths = self["PATH"].split(";")
+				new_sys_path = []
+				
+				for old_path_item in current_sys_paths:
+					
+					if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
+						new_sys_path.append(old_path_item)
+						
+				self["PATH"] = ";".join(new_sys_path)
+		Remove_Studio_Code_From_Python_Path()
+		Remove_Studio_Code_From_Maya_Script_Path()
+		Remove_Studio_Code_From_System_Path()
+		Remove_Studio_Code_Nuke_Path_Path()	
+	#----------------------------------------------------------------------
+	def Set_Code_Location(self,python_version):
+		""""""
+		if python_version == "2":
+			python_version = "Python2"
+		elif python_version == "3":
+			python_version = "Python3"
+			
+		maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
+		nuke_path           = os.path.join(_code_base_path,python_version,"Software","Nuke")
+		global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
+		self.Add_Path_To_Python_Path(maya_path)
+		self.Add_Path_To_Python_Path(global_systems_path)
+		self["NUKE_PATH"] = nuke_path
+	#----------------------------------------------------------------------
+	def Add_Path_To_Python_Path(self,path):
+		""""""
+		path = str(path)
+		if not "PYTHONPATH" in self:
+			self["PYTHONPATH"] = path
+		else:
+			current_paths = self["PYTHONPATH"].split(";")
+			
+			if not path in current_paths:
+				current_paths.append(path)
+				
+			self["PYTHONPATH"] = ";".join( current_paths )
+	#----------------------------------------------------------------------
+	def Remove_Path_From_Python_Path(self,path):
+		""""""
+		path = str(path)
+		if "PYTHONPATH" in self:
+			current_paths = self["PYTHONPATH"].split(";")
+			if path in current_paths:
+				current_paths.remove(path)
+			self["PYTHONPATH"] = ";".join(current_paths)
+	#----------------------------------------------------------------------
+	def Add_Maya_Module_Path(self,path):
+		""""""
+		path = str(path)
+		if not "MAYA_MODULE_PATH" in self:
+			self["MAYA_MODULE_PATH"] = path
+		else:
+			current_paths = self["MAYA_MODULE_PATH"].split(";")
+			if not path in current_paths:
+				current_paths.append(path)
+			self["MAYA_MODULE_PATH"] = ";".join( current_paths )
+	#----------------------------------------------------------------------
+	def Add_Path_To_Maya_Scripts_Path(self,path):
+		""""""
+		path = str(path)
+		if not "MAYA_SCRIPT_PATH" in self:
+			self["MAYA_SCRIPT_PATH"] = path
+		else:
+			current_paths = self["MAYA_SCRIPT_PATH"].split(";")
+			
+			if not path in current_paths:
+				current_paths.append(path)
+				
+			self["MAYA_SCRIPT_PATH"] = ";".join( current_paths )
+	#----------------------------------------------------------------------
+	def Add_Path_To_Maya_XBMLANGPATH(self,path):
+		""""""
+		path = str(path)
+		if not "XBMLANGPATH" in self:
+			self["XBMLANGPATH"] = path
+		else:
+			current_paths = self["XBMLANGPATH"].split(";")
+			
+			if not path in current_paths:
+				current_paths.append(path)
+				
+			self["XBMLANGPATH"] = ";".join( current_paths )
+	#----------------------------------------------------------------------
+	def Maya_Enable_Legacy_Render_Layers(self,val):
+		"""Turns on of off the use of MAYA_ENABLE_LEGACY_RENDER_LAYERS"""
+		if val == True:
+			self["MAYA_ENABLE_LEGACY_RENDER_LAYERS"] = "1"
+		elif "MAYA_ENABLE_LEGACY_RENDER_LAYERS" in self:
+			del self["MAYA_ENABLE_LEGACY_RENDER_LAYERS"] 
+	
+	
+	#----------------------------------------------------------------------
+	def Maya_Enable_Legacy_Viewport(self,val):
+		"""Turns on of off the use of MAYA_ENABLE_LEGACY_VIEWPORT"""
+		if val == True:
+			self["MAYA_ENABLE_LEGACY_VIEWPORT"] = "1"
+		elif "MAYA_ENABLE_LEGACY_VIEWPORT" in self:
+			del self["MAYA_ENABLE_LEGACY_VIEWPORT"]
+	
+	#----------------------------------------------------------------------
+	def Enable_User_Tools(self,val):
+		"""Turns on of off the use of Studio User Tools """
+		if val == True :
+			self["NO_USER_TOOLS"] = "0"
+		else:
+			self["NO_USER_TOOLS"] = "1"
+	
+	#----------------------------------------------------------------------
+	def Set_Maya_Python_Version(self,version):
+		"""Sets The Version Of Python That Maya Users This Is only Used In Maya 2022"""
+		self["MAYA_PYTHON_VERSION"] = str(version)
+		
 ########################################################################
 class Software_Launcher_UI(QtWidgets.QWidget):
 	""""""
@@ -313,47 +473,44 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		use_legacy_Render_Layers = self.legacyRenderLayersCheckBox.checkState() == QtCore.Qt.Checked
 		use_legacy_Viewport      = self.legacyViewportCheckBox.checkState() == QtCore.Qt.Checked
 		use_maya_user_tools      = self.userToolsCheckBox.checkState() == QtCore.Qt.Checked
-		
-		Clear_Legacy_Enviorment()
+		env = Environment()
+		#Clear_Legacy_Enviorment()
 		
 		
 		if maya_version != "2022":
 			python_version = "2"
 		
-		Set_Maya_Python_Version(python_version)
-		Set_Code_Location(python_version)
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Code_Location(python_version)
 			
 		if maya_mode == Modes.Studio:
-			Enable_User_Tools(use_maya_user_tools)
+			env.Enable_User_Tools(use_maya_user_tools)
 		
-		Maya_Enable_Legacy_Render_Layers(use_legacy_Render_Layers)
-		Maya_Enable_Legacy_Viewport(use_legacy_Viewport)
+		env.Maya_Enable_Legacy_Render_Layers(use_legacy_Render_Layers)
+		env.Maya_Enable_Legacy_Viewport(use_legacy_Viewport)
 		
 		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd)
-		
-	#----------------------------------------------------------------------
-	def update_Random_Fact(self):
-		""""""
-		new_fact = self._Random_facts_selector.get_Random_Fact()
-		new_html = self._orig_html.replace("REPLACE_CATEGORY",new_fact.category).replace("REPLACE_SUBJECT",new_fact.subject).replace("REPLACE_FACT",new_fact.fact)
-		self.Random_Facts_Text.setHtml(new_html)
+		subprocess.Popen(cmd, env=env)
 		
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_AutomotiveButton_clicked(self):
 		""""""
+		env = Environment()
 		python_version = "2"
 		maya_version   = "2020"
-		Clear_Legacy_Enviorment()
-		Set_Maya_Python_Version(python_version)
-		Set_Code_Location(python_version)
-		Add_Path_To_Python_Path(_3rd_Party_path)
-		Maya_Enable_Legacy_Render_Layers(True)
-		Maya_Enable_Legacy_Viewport(True)
-		Enable_User_Tools(True)
+		#Clear_Legacy_Enviorment()
+		env.Set_Maya_Python_Version(python_version)
+		#Set_Maya_Python_Version(python_version)
+		env.Set_Code_Location(python_version)
+		#Set_Code_Location(python_version)
+		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
 		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd)
+		#subprocess.Popen(args=...,executable=...,cwd=..., env=env)
+		subprocess.Popen(cmd, env=env)
 		
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
@@ -361,75 +518,76 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		""""""
 		python_version = "2"
 		maya_version   = "2020"	
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Maya_Python_Version(python_version)
 		
-		Clear_Legacy_Enviorment()
-		Set_Maya_Python_Version(python_version)
-		
-		Maya_Enable_Legacy_Render_Layers(False)
-		Maya_Enable_Legacy_Viewport(True)
-		Enable_User_Tools(False)
+		env.Maya_Enable_Legacy_Render_Layers(False)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(False)
 		
 		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd)
+		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_LegoButton_clicked(self):
 		""""""
 		python_version = "3"
-		maya_version   = "2022"	
-		Clear_Legacy_Enviorment()
-		Set_Maya_Python_Version(python_version)
+		maya_version   = "2022"
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Maya_Python_Version(python_version)
 		
-		Maya_Enable_Legacy_Render_Layers(False)
-		Maya_Enable_Legacy_Viewport(True)
-		Enable_User_Tools(False)
+		env.Maya_Enable_Legacy_Render_Layers(False)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(False)
 		
-		#Add_Maya_Module_Path( _code_base_path.joinpath("_3rd_Party","LLRToolset","Tools_2022") )
-		Add_Maya_Module_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\modules\LLRToolset")
-		os.environ["MAYA_SHELF_PATH"] = r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\assets\shelf"
-		Add_Path_To_Python_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
-		Add_Path_To_Maya_XBMLANGPATH(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\shelf\icons")
-		Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
+		env.Add_Maya_Module_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\modules\LLRToolset")
+		env["MAYA_SHELF_PATH"] = r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\assets\shelf"
+		env.Add_Path_To_Python_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
+		env.Add_Path_To_Maya_XBMLANGPATH(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\shelf\icons")
+		env.Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
 		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd)
+		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_AmsterdamButton_clicked(self):
 		""""""
 		python_version = "2"
 		maya_version   = "2018"
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Code_Location(python_version)
 		
-		Clear_Legacy_Enviorment()
-		Set_Maya_Python_Version(python_version)
-		Set_Code_Location(python_version)
-		
-		Maya_Enable_Legacy_Render_Layers(True)
-		Maya_Enable_Legacy_Viewport(True)
-		Enable_User_Tools(True)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
 		
 		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd)
+		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_Nuke_12_Button_clicked(self):
 		""""""
 		python_version = "2"
-		
-		Clear_Legacy_Enviorment()
-		Set_Code_Location(python_version)
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Code_Location(python_version)
 		
 		cmd = self._nuke_12_exe
-		subprocess.Popen(cmd)
+		subprocess.Popen(cmd, env=env)
+		
 	@QtCore.Slot()
 	def on_Nuke_13_Button_clicked(self):
 		""""""
 		python_version = "3"
-		
-		Clear_Legacy_Enviorment()
-		Set_Code_Location(python_version)
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Code_Location(python_version)
 		
 		cmd = self._nuke_13_exe
-		subprocess.Popen(cmd)
+		subprocess.Popen(cmd, env=env)
 		
 _UI_Loader.registerCustomWidget(Software_Launcher_UI)
 
