@@ -403,6 +403,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
 			self.userToolsCheckBox = QtWidgets.QCheckBox()
+			self.Use_Nuke_X_checkBox = QtWidgets.QCheckBox() 
 			self.Enable_Remote_Debugging_checkBox = QtWidgets.QCheckBox().to
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
@@ -592,6 +593,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Set_Code_Location(python_version)
 		
 		cmd = self._nuke_12_exe
+		if self.Use_Nuke_X_checkBox.isChecked():
+			cmd = str(cmd) + " --nukex"
 		subprocess.Popen(cmd, env=env)
 		
 	@QtCore.Slot()
@@ -603,6 +606,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Set_Code_Location(python_version)
 		
 		cmd = self._nuke_13_exe
+		if self.Use_Nuke_X_checkBox.isChecked():
+			cmd = str(cmd) + " --nukex"
 		subprocess.Popen(cmd, env=env)
 		
 _UI_Loader.registerCustomWidget(Software_Launcher_UI)
