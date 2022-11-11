@@ -13,7 +13,7 @@ _code_base_name     = _code_base_path.name
 _ui_folder_path     = _this_dir.joinpath("UI")
 _site_pak_path      = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
 _3rd_Party_path     = _code_base_path.joinpath("_3rd_Party")
-_winghome_path      = _code_base_path.joinpath("_3rd_Party","wing-debugger")
+_winghome_path      = r'v:\SGS_Tools\_3rd_Party\wing-debugger'
 
 os.sys.path.append(str(_site_pak_path))
 
@@ -557,7 +557,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Maya_Enable_Legacy_Render_Layers(False)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(False)
-		
+		env.Set_Code_Location(python_version)
 		env.Add_Maya_Module_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\modules\LLRToolset")
 		env["MAYA_SHELF_PATH"] = r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\assets\shelf"
 		env.Add_Path_To_Python_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
