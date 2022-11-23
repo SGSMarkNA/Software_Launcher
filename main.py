@@ -474,7 +474,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		python_version           = self.pythonComboBox.currentText()
 		use_legacy_Render_Layers = self.legacyRenderLayersCheckBox.checkState() == QtCore.Qt.Checked
 		use_legacy_Viewport      = self.legacyViewportCheckBox.checkState() == QtCore.Qt.Checked
-		use_maya_user_tools      = self.userToolsCheckBox.checkState() == QtCore.Qt.Checked
+		use_maya_user_tools      = self.userToolsCheckBox.checkState() == QtCore.Qt.Checked and self.userToolsCheckBox.isEnabled()
 		env = Environment()
 		#Clear_Legacy_Enviorment()
 		
@@ -485,9 +485,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Set_Maya_Python_Version(python_version)
 		env.Set_Code_Location(python_version)
 			
-		if maya_mode == Modes.Studio:
-			env.Enable_User_Tools(use_maya_user_tools)
-		
+		env.Enable_User_Tools(use_maya_user_tools)
+			
 		env.Maya_Enable_Legacy_Render_Layers(use_legacy_Render_Layers)
 		env.Maya_Enable_Legacy_Viewport(use_legacy_Viewport)
 		
