@@ -378,7 +378,16 @@ class Environment(dict):
 			self["MAYA_ENABLE_LEGACY_VIEWPORT"] = "1"
 		elif "MAYA_ENABLE_LEGACY_VIEWPORT" in self:
 			del self["MAYA_ENABLE_LEGACY_VIEWPORT"]
-	
+	#----------------------------------------------------------------------
+	def Set_ICIO_Profile_Path(self,path):
+		"""Sets the ICIO Env Var"""
+		path = str(path)
+		self["OCIO"] = path
+	#----------------------------------------------------------------------
+	def Set_Maya_Color_Management_Policy_File(self,path):
+		"""Sets the ICIO Env Var"""
+		path = str(path)
+		self["MAYA_COLOR_MANAGEMENT_POLICY_FILE"] = path
 	#----------------------------------------------------------------------
 	def Enable_User_Tools(self,val):
 		"""Turns on of off the use of Studio User Tools """
@@ -500,11 +509,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env = Environment()
 		python_version = "2"
 		maya_version   = "2020"
-		#Clear_Legacy_Enviorment()
 		env.Set_Maya_Python_Version(python_version)
-		#Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
 		env.Set_Code_Location(python_version)
-		#Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
 		env.Maya_Enable_Legacy_Render_Layers(True)
 		env.Maya_Enable_Legacy_Viewport(True)
@@ -520,6 +527,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		python_version = "3"
 		maya_version   = "2022"
 		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
 		env.Maya_Enable_Legacy_Render_Layers(True)
@@ -535,9 +543,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		python_version = "2"
 		maya_version   = "2020"	
 		env = Environment()
-		#Clear_Legacy_Enviorment()
 		env.Set_Maya_Python_Version(python_version)
-		
+		env.Set_Maya_Color_Management_Policy_File("")
 		env.Maya_Enable_Legacy_Render_Layers(False)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(False)
@@ -554,6 +561,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		#Clear_Legacy_Enviorment()
 		env.Set_Maya_Python_Version(python_version)
 		
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Lego_Maya_Ocio.xml")
 		env.Maya_Enable_Legacy_Render_Layers(False)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(False)
