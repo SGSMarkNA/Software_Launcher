@@ -37,9 +37,9 @@ class Modes:
 # made and edit wooho
 
 
-def Enable_Remote_DeBugging():
-	os.sys.path.append(_winghome_path)
-	os.environ["WINGHOME"] = _winghome_path
+#def Enable_Remote_DeBugging():
+	#os.sys.path.append(_winghome_path)
+	#os.environ["WINGHOME"] = _winghome_path
 
 #----------------------------------------------------------------------
 def get_Maya_Versions():
@@ -59,173 +59,6 @@ def find_Nuke_Versions(version):
 		return items[0]
 	else:
 		return None
-
-#----------------------------------------------------------------------
-def Maya_Enable_Legacy_Render_Layers(val):
-	"""Turns on of off the use of MAYA_ENABLE_LEGACY_RENDER_LAYERS"""
-	if val == True:
-		os.environ["MAYA_ENABLE_LEGACY_RENDER_LAYERS"] = "1"
-	elif "MAYA_ENABLE_LEGACY_RENDER_LAYERS" in os.environ:
-		del os.environ["MAYA_ENABLE_LEGACY_RENDER_LAYERS"] 
-
-
-#----------------------------------------------------------------------
-def Maya_Enable_Legacy_Viewport(val):
-	"""Turns on of off the use of MAYA_ENABLE_LEGACY_VIEWPORT"""
-	if val == True:
-		os.environ["MAYA_ENABLE_LEGACY_VIEWPORT"] = "1"
-	elif "MAYA_ENABLE_LEGACY_VIEWPORT" in os.environ:
-		del os.environ["MAYA_ENABLE_LEGACY_VIEWPORT"]
-
-#----------------------------------------------------------------------
-def Enable_User_Tools(val):
-	"""Turns on of off the use of Studio User Tools """
-	if val == True :
-		os.environ["NO_USER_TOOLS"] = "0"
-	else:
-		os.environ["NO_USER_TOOLS"] = "1"
-
-#----------------------------------------------------------------------
-def Set_Maya_Python_Version(version):
-	"""Sets The Version Of Python That Maya Users This Is only Used In Maya 2022"""
-	os.environ["MAYA_PYTHON_VERSION"] = str(version)
-#----------------------------------------------------------------------
-def Remove_Studio_Code_From_Python_Path():
-	""""""
-	if "PYTHONPATH" in os.environ:
-		new_python_path = []
-		
-		for old_path_item in os.environ["PYTHONPATH"].split(";"):
-			if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
-				new_python_path.append(old_path_item)
-				
-		os.environ["PYTHONPATH"] = ";".join(new_python_path)
-		
-#----------------------------------------------------------------------
-def Remove_Studio_Code_From_Maya_Script_Path():
-	""""""
-	if "MAYA_SCRIPT_PATH" in os.environ:
-		new_python_path = []
-		for old_path_item in os.environ["MAYA_SCRIPT_PATH"].split(";"):
-			if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
-				new_python_path.append(old_path_item)
-		os.environ["MAYA_SCRIPT_PATH"] = ";".join(new_python_path)
-		
-#----------------------------------------------------------------------
-def Remove_Studio_Code_Nuke_Path_Path():
-	""""""
-	if "NUKE_PATH" in os.environ:
-		os.environ["NUKE_PATH"] = ""
-
-#----------------------------------------------------------------------
-def Remove_Studio_Code_From_System_Path():
-	""""""
-	if "PATH" in os.environ["PATH"]:
-		current_sys_paths = os.environ["PATH"].split(";")
-		new_sys_path = []
-		
-		for old_path_item in current_sys_paths:
-			
-			if not _code_base_name in old_path_item and not "Git_Live_Code" in old_path_item:
-				new_sys_path.append(old_path_item)
-				
-		os.environ["PATH"] = ";".join(new_sys_path)
-
-
-#----------------------------------------------------------------------
-def Clear_Legacy_Enviorment():
-	""""""
-	Remove_Studio_Code_From_Python_Path()
-	Remove_Studio_Code_From_Maya_Script_Path()
-	Remove_Studio_Code_From_System_Path()
-	Remove_Studio_Code_Nuke_Path_Path()
-
-#----------------------------------------------------------------------
-def Add_Maya_Module_Path(path):
-	""""""
-	path = str(path)
-	if not "MAYA_MODULE_PATH" in os.environ:
-		os.environ["MAYA_MODULE_PATH"] = path
-	else:
-		current_paths = os.environ["MAYA_MODULE_PATH"].split(";")
-		if not path in current_paths:
-			current_paths.append(path)
-		os.environ["MAYA_MODULE_PATH"] = ";".join( current_paths )
-#----------------------------------------------------------------------
-def Remove_Maya_Module_Path(path):
-	""""""
-	path = str(path)
-	if "MAYA_MODULE_PATH" in os.environ:
-		current_paths = os.environ["MAYA_MODULE_PATH"].split(";")
-		if path in current_paths:
-			current_paths.remove(path)
-		os.environ["MAYA_MODULE_PATH"] = ";".join(current_paths)
-
-#----------------------------------------------------------------------
-def Add_Path_To_Python_Path(path):
-	""""""
-	path = str(path)
-	if not "PYTHONPATH" in os.environ:
-		os.environ["PYTHONPATH"] = path
-	else:
-		current_paths = os.environ["PYTHONPATH"].split(";")
-		
-		if not path in current_paths:
-			current_paths.append(path)
-			
-		os.environ["PYTHONPATH"] = ";".join( current_paths )
-#----------------------------------------------------------------------
-def Add_Path_To_Maya_XBMLANGPATH(path):
-	""""""
-	path = str(path)
-	if not "XBMLANGPATH" in os.environ:
-		os.environ["XBMLANGPATH"] = path
-	else:
-		current_paths = os.environ["XBMLANGPATH"].split(";")
-		
-		if not path in current_paths:
-			current_paths.append(path)
-			
-		os.environ["XBMLANGPATH"] = ";".join( current_paths )
-#----------------------------------------------------------------------
-def Add_Path_To_Maya_Scripts_Path(path):
-	""""""
-	path = str(path)
-	if not "MAYA_SCRIPT_PATH" in os.environ:
-		os.environ["MAYA_SCRIPT_PATH"] = path
-	else:
-		current_paths = os.environ["MAYA_SCRIPT_PATH"].split(";")
-		
-		if not path in current_paths:
-			current_paths.append(path)
-			
-		os.environ["MAYA_SCRIPT_PATH"] = ";".join( current_paths )
-#----------------------------------------------------------------------
-def Remove_Path_From_Python_Path(path):
-	""""""
-	path = str(path)
-	if "PYTHONPATH" in os.environ:
-		current_paths = os.environ["PYTHONPATH"].split(";")
-		if path in current_paths:
-			current_paths.remove(path)
-		os.environ["PYTHONPATH"] = ";".join(current_paths)
-		
-
-#----------------------------------------------------------------------
-def Set_Code_Location(python_version):
-	""""""
-	if python_version == "2":
-		python_version = "Python2"
-	elif python_version == "3":
-		python_version = "Python3"
-		
-	maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
-	nuke_path           = os.path.join(_code_base_path,python_version,"Software","Nuke")
-	global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
-	Add_Path_To_Python_Path(maya_path)
-	Add_Path_To_Python_Path(global_systems_path)
-	os.environ["NUKE_PATH"] = nuke_path
-	
 
 #----------------------------------------------------------------------
 def Build_Maya_Launch_Command(version):
@@ -488,7 +321,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		#Clear_Legacy_Enviorment()
 		
 		
-		if maya_version != "2022":
+		if int(maya_version) <= 2020:
 			python_version = "2"
 		
 		env.Set_Maya_Python_Version(python_version)
