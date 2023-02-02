@@ -9,6 +9,8 @@ os.sys.path.append(str(_this_dir))
 
 # Code Path Collection
 _code_base_path     = _this_dir.parent
+isinstance(_code_base_path,Path)
+
 _code_base_name     = _code_base_path.name
 _ui_folder_path     = _this_dir.joinpath("UI")
 _site_pak_path      = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
@@ -258,6 +260,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.Nuke_13_Button    = QtWidgets.QPushButton()
 			self.CleanButton       = QtWidgets.QPushButton()
 			self.LegoButton        = QtWidgets.QPushButton()
+			self.MayaUSDButton     = QtWidgets.QPushButton()
 	
 	#----------------------------------------------------------------------
 	def _init(self):
@@ -277,6 +280,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.Nuke_12_Button.setEnabled(False)
 		if self._nuke_13_exe == None:
 			self.Nuke_13_Button.setEnabled(False)
+		if not '2023' in get_Maya_Versions():
+			self.MayaUSDButton.setEnabled(False)
 	#----------------------------------------------------------------------
 	@QtCore.Slot(str)
 	def on_versionComboBox_currentIndexChanged(self,val):
@@ -382,6 +387,21 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(False)
 		
+		cmd = Build_Maya_Launch_Command(maya_version)
+		subprocess.Popen(cmd, env=env)
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_MayaUSDButton_clicked(self):
+		""""""
+		python_version = "2"
+		maya_version   = "2023"	
+		env = Environment()
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("")
+		env.Maya_Enable_Legacy_Render_Layers(False)
+		env.Maya_Enable_Legacy_Viewport(False)
+		env.Enable_User_Tools(False)
+		env.Add_Path_To_Python_Path(_code_base_path.joinpath("DML_USD","Maya"))
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
