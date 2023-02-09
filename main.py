@@ -133,10 +133,12 @@ class Environment(dict):
 			python_version = "Python3"
 			
 		maya_path           = os.path.join(_code_base_path,python_version,"Software","Maya")
+		maya_mel_path       = os.path.join(_code_base_path,python_version,"Software","Maya","Mel")
 		nuke_path           = os.path.join(_code_base_path,python_version,"Software","Nuke")
 		global_systems_path = os.path.join(_code_base_path,python_version,"Global_Systems")
 		self.Add_Path_To_Python_Path(maya_path)
 		self.Add_Path_To_Python_Path(global_systems_path)
+		self.Add_Path_To_Maya_Scripts_Path(maya_mel_path)
 		self["NUKE_PATH"] = nuke_path
 	#----------------------------------------------------------------------
 	def Add_Path_To_Python_Path(self,path):
@@ -253,7 +255,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.modeComboBox      = QtWidgets.QComboBox()
 			self.pythonComboBox    = QtWidgets.QComboBox()
 			self.AutomotiveButton  = QtWidgets.QComboBox()
-			self.AutomotiveButton_2022 = QtWidgets.QComboBox() 
+			self.AutomotiveButton2022 = QtWidgets.QComboBox() 
 			self.MayaLaunchButton  = QtWidgets.QPushButton()
 			self.AmsterdamButton   = QtWidgets.QPushButton()
 			self.Nuke_12_Button    = QtWidgets.QPushButton()
@@ -359,13 +361,14 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
-	def on_AutomotiveButton_2022_clicked(self):
+	def on_AutomotiveButton2022_clicked(self):
 		""""""
 		env = Environment()
 		python_version = "3"
 		maya_version   = "2022"
 		env.Set_Maya_Python_Version(python_version)
 		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
+		env.Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
 		env.Maya_Enable_Legacy_Render_Layers(True)
