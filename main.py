@@ -261,7 +261,6 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.Nuke_12_Button    = QtWidgets.QPushButton()
 			self.Nuke_13_Button    = QtWidgets.QPushButton()
 			self.CleanButton       = QtWidgets.QPushButton()
-			self.LegoButton        = QtWidgets.QPushButton()
 			self.MayaUSDButton     = QtWidgets.QPushButton()
 	
 	#----------------------------------------------------------------------
@@ -407,29 +406,6 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Add_Path_To_Python_Path(_code_base_path.joinpath("DML_USD","Maya"))
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
-	#----------------------------------------------------------------------
-	@QtCore.Slot()
-	def on_LegoButton_clicked(self):
-		""""""
-		python_version = "3"
-		maya_version   = "2022"
-		env = Environment()
-		#Clear_Legacy_Enviorment()
-		env.Set_Maya_Python_Version(python_version)
-		
-		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Lego_Maya_Ocio.xml")
-		env.Maya_Enable_Legacy_Render_Layers(False)
-		env.Maya_Enable_Legacy_Viewport(True)
-		env.Enable_User_Tools(False)
-		env.Set_Code_Location(python_version)
-		env.Add_Maya_Module_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\modules\LLRToolset")
-		env["MAYA_SHELF_PATH"] = r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\LEGO\assets\shelf"
-		env.Add_Path_To_Python_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
-		env.Add_Path_To_Maya_XBMLANGPATH(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\shelf\icons")
-		env.Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
-		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd, env=env)
-	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_AmsterdamButton_clicked(self):
 		""""""

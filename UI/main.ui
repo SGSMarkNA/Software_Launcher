@@ -360,6 +360,19 @@
                   <property name="bottomMargin">
                    <number>2</number>
                   </property>
+                  <item row="0" column="2">
+                   <widget class="QPushButton" name="CleanButton">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>Clean</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="1">
                    <widget class="QPushButton" name="AutomotiveButton">
                     <property name="sizePolicy">
@@ -370,32 +383,6 @@
                     </property>
                     <property name="text">
                      <string>Automotive</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="AmsterdamButton">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="text">
-                     <string>Amsterdam</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="3">
-                   <widget class="QPushButton" name="CleanButton">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="text">
-                     <string>Clean</string>
                     </property>
                    </widget>
                   </item>
@@ -412,8 +399,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="2">
-                   <widget class="QPushButton" name="LegoButton">
+                  <item row="0" column="0">
+                   <widget class="QPushButton" name="AmsterdamButton">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -421,7 +408,7 @@
                      </sizepolicy>
                     </property>
                     <property name="text">
-                     <string>Lego</string>
+                     <string>Amsterdam</string>
                     </property>
                    </widget>
                   </item>
