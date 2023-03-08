@@ -254,14 +254,19 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
 			self.pythonComboBox    = QtWidgets.QComboBox()
-			self.AutomotiveButton  = QtWidgets.QComboBox()
-			self.AutomotiveButton2022 = QtWidgets.QComboBox() 
-			self.MayaLaunchButton  = QtWidgets.QPushButton()
-			self.AmsterdamButton   = QtWidgets.QPushButton()
+			
+			self.Automotive_2022_aces_Button  = QtWidgets.QComboBox()
+			self.Automotive_2020_aces_Button  = QtWidgets.QComboBox()
+			
+			self.Amsterdam_2018_SRGB_Button   = QtWidgets.QPushButton()
+			self.Automotive_2022_SRGB_Button  = QtWidgets.QPushButton()
+			self.CPG_2020_SRGB_Button         = QtWidgets.QPushButton()
+			
 			self.Nuke_12_Button    = QtWidgets.QPushButton()
 			self.Nuke_13_Button    = QtWidgets.QPushButton()
 			self.CleanButton       = QtWidgets.QPushButton()
 			self.MayaUSDButton     = QtWidgets.QPushButton()
+			self.MayaLaunchButton  = QtWidgets.QPushButton()
 	
 	#----------------------------------------------------------------------
 	def _init(self):
@@ -343,13 +348,65 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
-	def on_AutomotiveButton_clicked(self):
+	def on_Automotive_2020_aces_Button_clicked(self):
 		""""""
 		env = Environment()
 		python_version = "2"
 		maya_version   = "2020"
 		env.Set_Maya_Python_Version(python_version)
 		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
+		env.Set_Code_Location(python_version)
+		
+		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
+		cmd = Build_Maya_Launch_Command(maya_version)
+		#subprocess.Popen(args=...,executable=...,cwd=..., env=env)
+		subprocess.Popen(cmd, env=env)
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_Automotive_2022_aces_Button_clicked(self):
+		""""""
+		env = Environment()
+		python_version = "3"
+		maya_version   = "2022"
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
+		
+		env.Set_Code_Location(python_version)
+		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
+		cmd = Build_Maya_Launch_Command(maya_version)
+		subprocess.Popen(cmd, env=env)
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_Automotive_2022_SRGB_Button_clicked(self):
+		""""""
+		env = Environment()
+		python_version = "3"
+		maya_version   = "2022"
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml")
+		
+		env.Set_Code_Location(python_version)
+		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
+		cmd = Build_Maya_Launch_Command(maya_version)
+		subprocess.Popen(cmd, env=env)
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_CPG_2020_SRGB_Button_clicked(self):
+		""""""
+		env = Environment()
+		python_version = "2"
+		maya_version   = "2020"
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml")
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
 		env.Maya_Enable_Legacy_Render_Layers(True)
@@ -360,34 +417,19 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
-	def on_AutomotiveButton2022_clicked(self):
+	def on_Amsterdam_2018_SRGB_Button_clicked(self):
 		""""""
+		python_version = "2"
+		maya_version   = "2018"
 		env = Environment()
-		python_version = "3"
-		maya_version   = "2022"
+		#Clear_Legacy_Enviorment()
 		env.Set_Maya_Python_Version(python_version)
-		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml")
-		env.Add_Path_To_Maya_Scripts_Path(r"\\mal-nasuni\legacy\Marks_CGI\_RESOURCES_\Tools\maya\scripts")
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml")
+		
 		env.Set_Code_Location(python_version)
-		env.Add_Path_To_Python_Path(_3rd_Party_path)
 		env.Maya_Enable_Legacy_Render_Layers(True)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(True)
-		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd, env=env)
-		
-	#----------------------------------------------------------------------
-	@QtCore.Slot()
-	def on_CleanButton_clicked(self):
-		""""""
-		python_version = "2"
-		maya_version   = "2020"	
-		env = Environment()
-		env.Set_Maya_Python_Version(python_version)
-		env.Set_Maya_Color_Management_Policy_File("")
-		env.Maya_Enable_Legacy_Render_Layers(False)
-		env.Maya_Enable_Legacy_Viewport(True)
-		env.Enable_User_Tools(False)
 		
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
@@ -404,22 +446,6 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Maya_Enable_Legacy_Viewport(False)
 		env.Enable_User_Tools(False)
 		env.Add_Path_To_Python_Path(_code_base_path.joinpath("DML_USD","Maya"))
-		cmd = Build_Maya_Launch_Command(maya_version)
-		subprocess.Popen(cmd, env=env)
-	@QtCore.Slot()
-	def on_AmsterdamButton_clicked(self):
-		""""""
-		python_version = "2"
-		maya_version   = "2018"
-		env = Environment()
-		#Clear_Legacy_Enviorment()
-		env.Set_Maya_Python_Version(python_version)
-		env.Set_Code_Location(python_version)
-		
-		env.Maya_Enable_Legacy_Render_Layers(True)
-		env.Maya_Enable_Legacy_Viewport(True)
-		env.Enable_User_Tools(True)
-		
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
 	#----------------------------------------------------------------------
