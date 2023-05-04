@@ -375,7 +375,7 @@
                    <number>2</number>
                   </property>
                   <item row="0" column="0">
-                   <widget class="QPushButton" name="Automotive_2020_aces_Button">
+                   <widget class="QPushButton" name="Maya_2020_aces_Button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -394,12 +394,12 @@
 W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
                     </property>
                     <property name="text">
-                     <string>Automotive 2020</string>
+                     <string>2020</string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QPushButton" name="Automotive_2022_aces_Button">
+                   <widget class="QPushButton" name="Maya_2022_aces_Button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -416,7 +416,7 @@ W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
 W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
                     </property>
                     <property name="text">
-                     <string>Automotive 2022</string>
+                     <string>2022</string>
                     </property>
                    </widget>
                   </item>
@@ -450,29 +450,7 @@ W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
                    <number>2</number>
                   </property>
                   <item row="0" column="0">
-                   <widget class="QPushButton" name="Amsterdam_2018_SRGB_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml</string>
-                    </property>
-                    <property name="text">
-                     <string>Amsterdam 2018</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" colspan="2">
-                   <widget class="QPushButton" name="CPG_2020_SRGB_Button">
+                   <widget class="QPushButton" name="Maya_2020_SRGB_Button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -491,12 +469,12 @@ W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml</string>
 W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
                     </property>
                     <property name="text">
-                     <string>CPG 2020</string>
+                     <string>2020</string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QPushButton" name="Automotive_2022_SRGB_Button">
+                   <widget class="QPushButton" name="Maya_2022_SRGB_Button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -513,7 +491,7 @@ W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
 W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml</string>
                     </property>
                     <property name="text">
-                     <string>Automotive 2022</string>
+                     <string>2022</string>
                     </property>
                    </widget>
                   </item>
