@@ -389,7 +389,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		python_version = "3"
 		maya_version   = "2022"
 		env.Set_Maya_Python_Version(python_version)
-		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml")
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya2022_scene-linear-sRGB_v00.xml")
 		
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
