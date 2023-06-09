@@ -2,7 +2,7 @@ import subprocess
 import os
 import sys
 from pathlib import Path
-import Random_Facts_Selector
+#import Random_Facts_Selector
 
 _this_dir = Path(os.path.dirname(__file__))
 os.sys.path.append(str(_this_dir))
@@ -261,6 +261,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			#self.Amsterdam_2018_SRGB_Button   = QtWidgets.QPushButton()
 			self.Maya_2022_SRGB_Button         = QtWidgets.QPushButton()
 			self.Maya_2020_SRGB_Button         = QtWidgets.QPushButton()
+			self.Maya_2023_SRGB_Button              = QtWidgets.QPushButton()
 			
 			self.Nuke_12_Button    = QtWidgets.QPushButton()
 			self.Nuke_13_Button    = QtWidgets.QPushButton()
@@ -381,6 +382,25 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Enable_User_Tools(True)
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
+	
+	## SRGB LAUNCHERS
+	#----------------------------------------------------------------------
+	@QtCore.Slot()
+	def on_Maya_2023_SRGB_Button_clicked(self):
+		""""""
+		env = Environment()
+		python_version = "3"
+		maya_version   = "2023"
+		env.Set_Maya_Python_Version(python_version)
+		env.Set_Maya_Color_Management_Policy_File("W:/OCIO_Configs/Maya2023_scene-linear-sRGB_v00.xml")
+		
+		env.Set_Code_Location(python_version)
+		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Maya_Enable_Legacy_Render_Layers(True)
+		env.Maya_Enable_Legacy_Viewport(True)
+		env.Enable_User_Tools(True)
+		cmd = Build_Maya_Launch_Command(maya_version)
+		subprocess.Popen(cmd, env=env)	
 	#----------------------------------------------------------------------
 	@QtCore.Slot()
 	def on_Maya_2022_SRGB_Button_clicked(self):
@@ -415,6 +435,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		cmd = Build_Maya_Launch_Command(maya_version)
 		#subprocess.Popen(args=...,executable=...,cwd=..., env=env)
 		subprocess.Popen(cmd, env=env)
+		
 	#----------------------------------------------------------------------
 	#@QtCore.Slot()
 	#def on_Amsterdam_2018_SRGB_Button_clicked(self):

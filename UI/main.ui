@@ -449,6 +449,28 @@ W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
                   <property name="bottomMargin">
                    <number>2</number>
                   </property>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="Maya_2022_SRGB_Button">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>13</pointsize>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>Loding Color Profile
+W:/OCIO_Configs/Maya2022_scene-linear-sRGB_v00.xml</string>
+                    </property>
+                    <property name="text">
+                     <string>2022</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="0">
                    <widget class="QPushButton" name="Maya_2020_SRGB_Button">
                     <property name="sizePolicy">
@@ -473,8 +495,8 @@ W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="Maya_2022_SRGB_Button">
+                  <item row="0" column="2">
+                   <widget class="QPushButton" name="Maya_2023_SRGB_Button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -487,11 +509,10 @@ W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
                      </font>
                     </property>
                     <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/Maya2022_scene-linear-sRGB_v00.xml</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loding Color Profile&lt;/p&gt;&lt;p&gt;W:\OCIO_Configs\Maya2023_scene-linear-sRGB_v00.xml&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                     <property name="text">
-                     <string>2022</string>
+                     <string>2023</string>
                     </property>
                    </widget>
                   </item>
