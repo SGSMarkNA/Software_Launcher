@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>344</width>
-    <height>758</height>
+    <width>479</width>
+    <height>860</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,10 +19,7 @@
   <property name="windowTitle">
    <string>Software Launcher</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_7">
-   <property name="spacing">
-    <number>0</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -35,893 +32,979 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="styleSheet">
-        <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+   <item row="0" column="0">
+    <widget class="QToolBox" name="toolBox">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="Applications">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>479</width>
+        <height>806</height>
+       </rect>
+      </property>
+      <attribute name="label">
+       <string>Applications</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>0</number>
        </property>
-       <property name="title">
-        <string>Global Options</string>
+       <property name="leftMargin">
+        <number>0</number>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QCheckBox" name="Enable_Remote_Debugging_checkBox">
-          <property name="text">
-           <string>Enable Remote Debugging</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QWidget" name="Nuke_Container_widget" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout_9">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QWidget" name="Nuke_Icon_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: qlineargradient(spread:pad, x1:0.433, y1:1, x2:0.449, y2:0, stop:0.147727 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 135));</string>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <property name="leftMargin">
-            <number>4</number>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="styleSheet">
+            <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
            </property>
-           <property name="topMargin">
-            <number>4</number>
+           <property name="title">
+            <string>Global Options</string>
            </property>
-           <property name="rightMargin">
-            <number>4</number>
-           </property>
-           <property name="bottomMargin">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="Nuke_Icon_label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>128</horstretch>
-               <verstretch>128</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="icons/icons.qrc">:/main/nuke.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>false</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_10"/>
-        </item>
-        <item>
-         <widget class="QFrame" name="Nuke_Luncher_Options_frame">
-          <property name="styleSheet">
-           <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <property name="leftMargin">
-            <number>4</number>
-           </property>
-           <property name="topMargin">
-            <number>4</number>
-           </property>
-           <property name="rightMargin">
-            <number>4</number>
-           </property>
-           <property name="bottomMargin">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QTabWidget" name="Nuke_Tabs_tabWidget">
-             <property name="tabPosition">
-              <enum>QTabWidget::North</enum>
-             </property>
-             <property name="tabShape">
-              <enum>QTabWidget::Triangular</enum>
-             </property>
-             <property name="currentIndex">
-              <number>0</number>
-             </property>
-             <property name="usesScrollButtons">
-              <bool>false</bool>
-             </property>
-             <property name="documentMode">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="Nuke_StudioPresets_Tab">
-              <attribute name="title">
-               <string>Studio Presets</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_12">
-               <item>
-                <widget class="QCheckBox" name="Use_Nuke_X_checkBox">
-                 <property name="text">
-                  <string>Use Nuke X</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QGridLayout" name="gridLayout_2">
-                 <item row="0" column="1">
-                  <widget class="QPushButton" name="Nuke_12_Button">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Nuke 12</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <widget class="QPushButton" name="Nuke_13_Button">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>Nuke 13</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="verticalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QCheckBox" name="Enable_Remote_Debugging_checkBox">
+              <property name="text">
+               <string>Enable Remote Debugging</string>
+              </property>
              </widget>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QWidget" name="Maya_Container_widget" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QWidget" name="widget_2" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: qlineargradient(spread:pad, x1:0.433, y1:1, x2:0.449, y2:0, stop:0.147727 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 135));</string>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <property name="leftMargin">
-            <number>4</number>
-           </property>
-           <property name="topMargin">
-            <number>4</number>
-           </property>
-           <property name="rightMargin">
-            <number>4</number>
-           </property>
-           <property name="bottomMargin">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="Maya_Icon_label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>128</horstretch>
-               <verstretch>128</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="icons/icons.qrc">:/main/mayaico.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>false</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_4"/>
-        </item>
-        <item>
-         <widget class="QFrame" name="Maya_Tab_frame">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <property name="leftMargin">
-            <number>4</number>
-           </property>
-           <property name="topMargin">
-            <number>4</number>
-           </property>
-           <property name="rightMargin">
-            <number>4</number>
-           </property>
-           <property name="bottomMargin">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QTabWidget" name="Maya_tabWidget">
-             <property name="styleSheet">
-              <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
-             </property>
-             <property name="tabPosition">
-              <enum>QTabWidget::North</enum>
-             </property>
-             <property name="tabShape">
-              <enum>QTabWidget::Triangular</enum>
-             </property>
-             <property name="currentIndex">
-              <number>0</number>
-             </property>
-             <property name="usesScrollButtons">
-              <bool>false</bool>
-             </property>
-             <property name="documentMode">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="Maya_StudioPresets_Tab">
-              <attribute name="title">
-               <string>Studio Presets</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_6">
-               <property name="spacing">
-                <number>10</number>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="Nuke_Container_widget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="Nuke_Icon_widget" native="true">
+              <property name="styleSheet">
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:0.433, y1:1, x2:0.449, y2:0, stop:0.147727 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 135));</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="leftMargin">
+                <number>4</number>
+               </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
+               <property name="rightMargin">
+                <number>4</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
-                <widget class="QGroupBox" name="Aces_groupBox">
-                 <property name="font">
-                  <font>
-                   <pointsize>13</pointsize>
-                  </font>
+                <widget class="QLabel" name="Nuke_Icon_label">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>128</horstretch>
+                   <verstretch>128</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="title">
-                  <string>ACES</string>
+                 <property name="text">
+                  <string/>
                  </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                 <property name="pixmap">
+                  <pixmap resource="icons/icons.qrc">:/main/nuke.png</pixmap>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_3">
-                  <property name="leftMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>2</number>
-                  </property>
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="Maya_2020_aces_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
-                    </property>
-                    <property name="text">
-                     <string>2020</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="Maya_2022_aces_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
-                    </property>
-                    <property name="text">
-                     <string>2022</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="SRGB_groupBox">
-                 <property name="font">
-                  <font>
-                   <pointsize>13</pointsize>
-                  </font>
-                 </property>
-                 <property name="title">
-                  <string>sRGB</string>
+                 <property name="scaledContents">
+                  <bool>false</bool>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_5">
-                  <property name="leftMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>2</number>
-                  </property>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="Maya_2022_SRGB_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/Maya2022_scene-linear-sRGB_v00.xml</string>
-                    </property>
-                    <property name="text">
-                     <string>2022</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="Maya_2020_SRGB_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>Loding Color Profile
-W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
-                    </property>
-                    <property name="text">
-                     <string>2020</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2">
-                   <widget class="QPushButton" name="Maya_2023_SRGB_Button">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>13</pointsize>
-                     </font>
-                    </property>
-                    <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loding Color Profile&lt;/p&gt;&lt;p&gt;W:\OCIO_Configs\Maya2023_scene-linear-sRGB_v00.xml&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                    </property>
-                    <property name="text">
-                     <string>2023</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <spacer name="verticalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_3">
-                 <property name="title">
-                  <string>Development</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_4">
-                  <property name="leftMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>2</number>
-                  </property>
-                  <property name="spacing">
-                   <number>2</number>
-                  </property>
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="MayaUSDButton">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="text">
-                     <string>USD</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </widget>
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="Maya_Custom_Launch_Tab">
-              <attribute name="title">
-               <string>Custom Launch</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_10"/>
+            </item>
+            <item>
+             <widget class="QFrame" name="Nuke_Luncher_Options_frame">
+              <property name="styleSheet">
+               <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <property name="leftMargin">
+                <number>4</number>
+               </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
+               <property name="rightMargin">
+                <number>4</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
+               </property>
                <item>
-                <layout class="QFormLayout" name="formLayout">
-                 <property name="sizeConstraint">
-                  <enum>QLayout::SetMinimumSize</enum>
+                <widget class="QTabWidget" name="Nuke_Tabs_tabWidget">
+                 <property name="tabPosition">
+                  <enum>QTabWidget::North</enum>
                  </property>
-                 <property name="fieldGrowthPolicy">
-                  <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                 <property name="tabShape">
+                  <enum>QTabWidget::Triangular</enum>
                  </property>
-                 <property name="labelAlignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <property name="currentIndex">
+                  <number>0</number>
                  </property>
-                 <property name="verticalSpacing">
-                  <number>10</number>
+                 <property name="usesScrollButtons">
+                  <bool>false</bool>
                  </property>
+                 <property name="documentMode">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="Nuke_StudioPresets_Tab">
+                  <attribute name="title">
+                   <string>Studio Presets</string>
+                  </attribute>
+                  <layout class="QVBoxLayout" name="verticalLayout_12">
+                   <item>
+                    <widget class="QCheckBox" name="Use_Nuke_X_checkBox">
+                     <property name="text">
+                      <string>Use Nuke X</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_2">
+                     <item row="0" column="1">
+                      <widget class="QPushButton" name="Nuke_12_Button">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="text">
+                        <string>Nuke 12</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QPushButton" name="Nuke_13_Button">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="text">
+                        <string>Nuke 13</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="Maya_Container_widget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item>
+               <widget class="QWidget" name="widget_2" native="true">
+                <property name="styleSheet">
+                 <string notr="true">background-color: qlineargradient(spread:pad, x1:0.433, y1:1, x2:0.449, y2:0, stop:0.147727 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 135));</string>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout">
                  <property name="leftMargin">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="topMargin">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="rightMargin">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="versionLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
+                 <item>
+                  <widget class="QLabel" name="Maya_Icon_label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>128</horstretch>
+                     <verstretch>128</verstretch>
+                    </sizepolicy>
                    </property>
                    <property name="text">
-                    <string>Version</string>
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="icons/icons.qrc">:/main/mayaico.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>false</bool>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QComboBox" name="versionComboBox">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>2022</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2020</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="modeLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                     <stylestrategy>PreferAntialias</stylestrategy>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
-                   </property>
-                   <property name="text">
-                    <string>Mode</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QComboBox" name="modeComboBox">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>Studio</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Clean</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="pythonLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
-                   </property>
-                   <property name="text">
-                    <string>Python</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="1">
-                  <widget class="QComboBox" name="pythonComboBox">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>3</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="userToolsLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
-                   </property>
-                   <property name="text">
-                    <string>User Tools</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="1">
-                  <widget class="QCheckBox" name="userToolsCheckBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="0">
-                  <widget class="QLabel" name="legacyRenderLayersLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
-                   </property>
-                   <property name="text">
-                    <string>Legacy Render Layers</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="1">
-                  <widget class="QCheckBox" name="legacyRenderLayersCheckBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="0">
-                  <widget class="QLabel" name="legacyViewportLabel">
-                   <property name="font">
-                    <font>
-                     <family>OpenSymbol</family>
-                     <pointsize>8</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::Box</enum>
-                   </property>
-                   <property name="text">
-                    <string>Legacy Viewport</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="1">
-                  <widget class="QCheckBox" name="legacyViewportCheckBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="9" column="0" colspan="2">
-                  <widget class="Line" name="line">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="0" colspan="2">
-                  <widget class="Line" name="line_2">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0" colspan="2">
-                  <widget class="Line" name="line_3">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0" colspan="2">
-                  <widget class="Line" name="line_4">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0" colspan="2">
-                  <widget class="Line" name="line_5">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
                    </property>
                   </widget>
                  </item>
                 </layout>
-               </item>
-               <item>
-                <widget class="QPushButton" name="MayaLaunchButton">
-                 <property name="text">
-                  <string>Launch</string>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="Maya_Tab_frame">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Box</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
+                 <property name="spacing">
+                  <number>4</number>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="verticalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                 <property name="leftMargin">
+                  <number>4</number>
                  </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
+                 <property name="topMargin">
+                  <number>4</number>
                  </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
+                 <property name="rightMargin">
+                  <number>4</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>4</number>
+                 </property>
+                 <item>
+                  <widget class="QTabWidget" name="Maya_tabWidget">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+                   </property>
+                   <property name="tabPosition">
+                    <enum>QTabWidget::North</enum>
+                   </property>
+                   <property name="tabShape">
+                    <enum>QTabWidget::Triangular</enum>
+                   </property>
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <property name="usesScrollButtons">
+                    <bool>false</bool>
+                   </property>
+                   <property name="documentMode">
+                    <bool>true</bool>
+                   </property>
+                   <widget class="QWidget" name="Maya_StudioPresets_Tab">
+                    <attribute name="title">
+                     <string>Studio Presets</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_6">
+                     <property name="spacing">
+                      <number>10</number>
+                     </property>
+                     <item>
+                      <widget class="QGroupBox" name="Aces_groupBox">
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="title">
+                        <string>ACES</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_3">
+                        <property name="leftMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>2</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QPushButton" name="Maya_2020_aces_Button">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>13</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Loding Color Profile
+W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
+                          </property>
+                          <property name="text">
+                           <string>2020</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QPushButton" name="Maya_2022_aces_Button">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>13</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Loding Color Profile
+W:/OCIO_Configs/aces_1.2_marks/Maya_2020_Marks_00.xml</string>
+                          </property>
+                          <property name="text">
+                           <string>2022</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="SRGB_groupBox">
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="title">
+                        <string>sRGB</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_5">
+                        <property name="leftMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>2</number>
+                        </property>
+                        <item row="0" column="1">
+                         <widget class="QPushButton" name="Maya_2022_SRGB_Button">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>13</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Loding Color Profile
+W:/OCIO_Configs/Maya2022_scene-linear-sRGB_v00.xml</string>
+                          </property>
+                          <property name="text">
+                           <string>2022</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="0">
+                         <widget class="QPushButton" name="Maya_2020_SRGB_Button">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>13</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Loding Color Profile
+W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
+                          </property>
+                          <property name="text">
+                           <string>2020</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="2">
+                         <widget class="QPushButton" name="Maya_2023_SRGB_Button">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>13</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loding Color Profile&lt;/p&gt;&lt;p&gt;W:\OCIO_Configs\Maya2023_scene-linear-sRGB_v00.xml&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          </property>
+                          <property name="text">
+                           <string>2023</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_3">
+                       <property name="title">
+                        <string>Development</string>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_4">
+                        <property name="leftMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>2</number>
+                        </property>
+                        <property name="spacing">
+                         <number>2</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QPushButton" name="MayaUSDButton">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="text">
+                           <string>USD</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="Maya_Custom_Launch_Tab">
+                    <attribute name="title">
+                     <string>Custom Launch</string>
+                    </attribute>
+                    <layout class="QVBoxLayout" name="verticalLayout_5">
+                     <item>
+                      <layout class="QFormLayout" name="formLayout">
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMinimumSize</enum>
+                       </property>
+                       <property name="fieldGrowthPolicy">
+                        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                       </property>
+                       <property name="labelAlignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                       <property name="verticalSpacing">
+                        <number>10</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="versionLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>Version</string>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QComboBox" name="versionComboBox">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>2022</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>2020</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="modeLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                           <stylestrategy>PreferAntialias</stylestrategy>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>Mode</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QComboBox" name="modeComboBox">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Studio</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Clean</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QLabel" name="pythonLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>Python</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QComboBox" name="pythonComboBox">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>10</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:pad, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.272727 rgba(255, 255, 255, 255), stop:0.886364 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>3</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>2</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                       <item row="6" column="0">
+                        <widget class="QLabel" name="userToolsLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>User Tools</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="6" column="1">
+                        <widget class="QCheckBox" name="userToolsCheckBox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="checked">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="8" column="0">
+                        <widget class="QLabel" name="legacyRenderLayersLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>Legacy Render Layers</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="8" column="1">
+                        <widget class="QCheckBox" name="legacyRenderLayersCheckBox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="checked">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="10" column="0">
+                        <widget class="QLabel" name="legacyViewportLabel">
+                         <property name="font">
+                          <font>
+                           <family>OpenSymbol</family>
+                           <pointsize>8</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Box</enum>
+                         </property>
+                         <property name="text">
+                          <string>Legacy Viewport</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="10" column="1">
+                        <widget class="QCheckBox" name="legacyViewportCheckBox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.488, cy:0.459, radius:1.565, fx:0.494, fy:0.443, stop:0.210227 rgba(255, 255, 255, 255), stop:0.903409 rgba(0, 0, 0, 255));</string>
+                         </property>
+                         <property name="checked">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="9" column="0" colspan="2">
+                        <widget class="Line" name="line">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="7" column="0" colspan="2">
+                        <widget class="Line" name="line_2">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="0" colspan="2">
+                        <widget class="Line" name="line_3">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0" colspan="2">
+                        <widget class="Line" name="line_4">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0" colspan="2">
+                        <widget class="Line" name="line_5">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="MayaLaunchButton">
+                       <property name="text">
+                        <string>Launch</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_2">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Utilities">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>479</width>
+        <height>806</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.433, y1:1, x2:0.449, y2:0, stop:0.147727 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 135));
+color: rgb(0, 255, 0);</string>
+      </property>
+      <attribute name="label">
+       <string>Utilities</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="Lego_Path_Repair_Tool_Button">
+           <property name="font">
+            <font>
+             <pointsize>15</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Lego Path Repair Tool</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
   </layout>
  </widget>

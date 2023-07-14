@@ -5,17 +5,23 @@ from pathlib import Path
 #import Random_Facts_Selector
 
 _this_dir = Path(os.path.dirname(__file__))
+_applications_dir = os.path.realpath( str(_this_dir) + "/../Applications")
 os.sys.path.append(str(_this_dir))
+os.sys.path.append(_applications_dir)
+
+import Lego_Path_Repair_Tool
 
 # Code Path Collection
 _code_base_path     = _this_dir.parent
 isinstance(_code_base_path,Path)
 
-_code_base_name     = _code_base_path.name
-_ui_folder_path     = _this_dir.joinpath("UI")
-_site_pak_path      = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
-_3rd_Party_path     = _code_base_path.joinpath("_3rd_Party")
-_winghome_path      = r'v:\SGS_Tools\_3rd_Party\wing-debugger'
+_code_base_name       = _code_base_path.name
+_ui_folder_path       = _this_dir.joinpath("UI")
+_site_pak_path        = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
+_3rd_Party_path       = _code_base_path.joinpath("_3rd_Party")
+_Amsterdam_Maya       = _code_base_path.joinpath("Amsterdam\Maya")
+_Amsterdam_Maya_icons = _code_base_path.joinpath("Amsterdam","Maya","icons")
+_winghome_path        = r'v:\SGS_Tools\_3rd_Party\wing-debugger'
 
 os.sys.path.append(str(_site_pak_path))
 
@@ -245,6 +251,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 	def __init__(self,parent=None):
 		"""Constructor"""
 		super(Software_Launcher_UI,self).__init__(parent)
+		self._lego_path_repair_to_window = None
 		if False:
 			self.legacyRenderLayersCheckBox = QtWidgets.QCheckBox()
 			self.legacyViewportCheckBox = QtWidgets.QCheckBox()
@@ -254,6 +261,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.versionComboBox   = QtWidgets.QComboBox()
 			self.modeComboBox      = QtWidgets.QComboBox()
 			self.pythonComboBox    = QtWidgets.QComboBox()
+			
+			#Apps
 			
 			self.Maya_2022_aces_Button  = QtWidgets.QComboBox()
 			self.Maya_2020_aces_Button  = QtWidgets.QComboBox()
@@ -268,6 +277,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 			self.CleanButton       = QtWidgets.QPushButton()
 			self.MayaUSDButton     = QtWidgets.QPushButton()
 			self.MayaLaunchButton  = QtWidgets.QPushButton()
+			
+			# Utilites
+			self.Lego_Path_Repair_Tool_Button = QtWidgets.QPushButton()
 	
 	#----------------------------------------------------------------------
 	def _init(self):
@@ -377,6 +389,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Maya_XBMLANGPATH(_Amsterdam_Maya_icons)
+		
 		env.Maya_Enable_Legacy_Render_Layers(True)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(True)
@@ -396,6 +411,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Maya_XBMLANGPATH(_Amsterdam_Maya_icons)
+		
 		env.Maya_Enable_Legacy_Render_Layers(True)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(True)
@@ -413,6 +431,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		
 		env.Set_Code_Location(python_version)
 		env.Add_Path_To_Python_Path(_3rd_Party_path)
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Maya_XBMLANGPATH(_Amsterdam_Maya_icons)
+		
 		env.Maya_Enable_Legacy_Render_Layers(True)
 		env.Maya_Enable_Legacy_Viewport(True)
 		env.Enable_User_Tools(True)
@@ -495,6 +516,17 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		if self.Use_Nuke_X_checkBox.isChecked():
 			cmd = str(cmd) + " --nukex"
 		subprocess.Popen(cmd, env=env)
+	##
+	# APPLICATIONS
+	##
+	@QtCore.Slot()
+	def on_Lego_Path_Repair_Tool_Button_clicked(self):
+		if self._lego_path_repair_to_window is not None:
+			self._lego_path_repair_to_window.hide()
+			self._lego_path_repair_to_window.destroy()
+			self._lego_path_repair_to_window = None
+		self._lego_path_repair_to_window = Lego_Path_Repair_Tool.make_ui()
+		self._lego_path_repair_to_window.show()
 		
 _UI_Loader.registerCustomWidget(Software_Launcher_UI)
 
