@@ -598,6 +598,19 @@ W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
                        </layout>
                       </widget>
                      </item>
+                     <item>
+                      <spacer name="verticalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                     </layout>
                    </widget>
                    <widget class="QWidget" name="Maya_Custom_Launch_Tab">
