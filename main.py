@@ -66,7 +66,11 @@ def find_Nuke_Versions(version):
 	if len(items):
 		return items[0]
 	else:
-		return None
+		p = Path("D:/Program Files")
+		items = list(p.glob("Nuke{}*/Nuke*.exe".format(version)))
+		if len(items):
+			return items[0]
+	return None
 
 #----------------------------------------------------------------------
 def Build_Maya_Launch_Command(version):
