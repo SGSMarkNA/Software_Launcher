@@ -360,6 +360,9 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Maya_Enable_Legacy_Render_Layers(use_legacy_Render_Layers)
 		env.Maya_Enable_Legacy_Viewport(use_legacy_Viewport)
 		
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Maya_XBMLANGPATH(_Amsterdam_Maya_icons)
+		
 		cmd = Build_Maya_Launch_Command(maya_version)
 		subprocess.Popen(cmd, env=env)
 		
