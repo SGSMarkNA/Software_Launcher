@@ -19,7 +19,8 @@ _code_base_name       = _code_base_path.name
 _ui_folder_path       = _this_dir.joinpath("UI")
 _site_pak_path        = _code_base_path.joinpath("Python3","Global_Systems","AW_site_packages")
 _3rd_Party_path       = _code_base_path.joinpath("_3rd_Party")
-_Amsterdam_Maya       = _code_base_path.joinpath("Amsterdam\Maya")
+_Amsterdam_Maya       = _code_base_path.joinpath("Amsterdam","Maya")
+_Amsterdam_Nuke       = _code_base_path.joinpath("Amsterdam","Nuke")
 _Amsterdam_Maya_icons = _code_base_path.joinpath("Amsterdam","Maya","icons")
 _winghome_path        = r'v:\SGS_Tools\_3rd_Party\wing-debugger'
 
@@ -518,7 +519,8 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env = Environment()
 		#Clear_Legacy_Enviorment()
 		env.Set_Code_Location(python_version)
-		
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Python_Path(_Amsterdam_Nuke)
 		cmd = self._nuke_13_exe
 		if self.Use_Nuke_X_checkBox.isChecked():
 			cmd = str(cmd) + " --nukex"
