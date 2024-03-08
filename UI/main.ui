@@ -234,6 +234,19 @@
                        </property>
                       </widget>
                      </item>
+                     <item row="0" column="3">
+                      <widget class="QPushButton" name="Nuke_15_Button">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="text">
+                        <string>Nuke 15</string>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </item>
                    <item>
@@ -974,8 +987,8 @@ W:/OCIO_Configs/Maya_2020_Marks_sRGB_v00.xml</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>479</width>
-        <height>806</height>
+        <width>225</width>
+        <height>58</height>
        </rect>
       </property>
       <property name="styleSheet">

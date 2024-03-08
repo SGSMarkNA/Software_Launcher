@@ -291,6 +291,7 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		""""""
 		self._nuke_12_exe = find_Nuke_Versions(12)
 		self._nuke_13_exe = find_Nuke_Versions(13)
+		self._nuke_15_exe = find_Nuke_Versions(15)
 		self._wing_remote_debugging_enabled = False
 		self.versionComboBox.clear()
 		maya_versions = get_Maya_Versions()
@@ -522,6 +523,19 @@ class Software_Launcher_UI(QtWidgets.QWidget):
 		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
 		env.Add_Path_To_Python_Path(_Amsterdam_Nuke)
 		cmd = self._nuke_13_exe
+		if self.Use_Nuke_X_checkBox.isChecked():
+			cmd = str(cmd) + " --nukex"
+		subprocess.Popen(cmd, env=env)
+	@QtCore.Slot()
+	def on_Nuke_15_Button_clicked(self):
+		""""""
+		python_version = "3"
+		env = Environment()
+		#Clear_Legacy_Enviorment()
+		env.Set_Code_Location(python_version)
+		env.Add_Path_To_Python_Path(_Amsterdam_Maya)
+		env.Add_Path_To_Python_Path(_Amsterdam_Nuke)
+		cmd = self._nuke_15_exe
 		if self.Use_Nuke_X_checkBox.isChecked():
 			cmd = str(cmd) + " --nukex"
 		subprocess.Popen(cmd, env=env)
